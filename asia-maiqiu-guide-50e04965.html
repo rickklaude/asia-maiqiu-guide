@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识库 · 买球站 · 对照与延伸</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.7;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-container {
+            max-width: 1080px;
+            width: 100%;
+        }
+
+        /* 标头 —— 目录感说明 */
+        .site-header {
+            margin-bottom: 2.5rem;
+            padding: 0 0.25rem;
+        }
+
+        .site-header h1 {
+            font-size: 1.9rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            color: #0f1a2b;
+            border-left: 4px solid #3b7a9e;
+            padding-left: 1rem;
+        }
+
+        .site-header .sub {
+            margin-top: 0.4rem;
+            font-size: 0.95rem;
+            color: #4a5b6e;
+            border-bottom: 1px solid #d5dbe2;
+            padding-bottom: 0.7rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        /* 卡片系统 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #fffffffa;
+            border: 1px solid #dfe5ec;
+            border-radius: 14px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.04);
+            padding: 1.75rem 2rem;
+            transition: box-shadow 0.15s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 14px rgba(0, 20, 40, 0.06), 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .card h2, .card h3 {
+            font-weight: 500;
+            font-size: 1.25rem;
+            margin-bottom: 0.9rem;
+            color: #1f3347;
+            border-bottom: 2px solid #e9eef4;
+            padding-bottom: 0.45rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            border-bottom: none;
+            padding-bottom: 0;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2b4058;
+        }
+
+        .card p, .card li {
+            font-size: 0.98rem;
+            margin-bottom: 0.6rem;
+            color: #2c4058;
+        }
+
+        .card ul, .card ol {
+            padding-left: 1.3rem;
+            margin-top: 0.2rem;
+        }
+
+        .card li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* inline 链接 */
+        a {
+            color: #206694;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #b4c9dd;
+            transition: border-color 0.1s, color 0.1s;
+        }
+
+        a:hover {
+            color: #0f4b70;
+            border-bottom: 1px solid #0f4b70;
+        }
+
+        .btn-soft {
+            display: inline-block;
+            background: #e7edf4;
+            border: 1px solid #cbd7e6;
+            border-radius: 30px;
+            padding: 0.3rem 1.1rem;
+            font-size: 0.9rem;
+            color: #1f3a51;
+            font-weight: 450;
+            transition: 0.1s ease;
+            margin: 0.2rem 0.1rem;
+        }
+
+        .btn-soft:hover {
+            background: #d6e0ec;
+            border-color: #9eb2ca;
+        }
+
+        .meta-tag {
+            background: #eaf0f7;
+            border-radius: 14px;
+            padding: 0.15rem 0.7rem;
+            font-size: 0.78rem;
+            color: #2f4a66;
+            border: 1px solid #d3deec;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .flex-between {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .note-box {
+            background: #f7f9fc;
+            border-left: 4px solid #7f9aba;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            margin: 1rem 0 0.2rem 0;
+            font-size: 0.95rem;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        .info-item {
+            background: #f3f6fa;
+            padding: 0.5rem 0.9rem;
+            border-radius: 10px;
+            border: 1px solid #e2e9f2;
+        }
+
+        .info-item strong {
+            font-weight: 550;
+            display: block;
+            font-size: 0.85rem;
+            color: #2c4b68;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .info-item span {
+            font-size: 0.98rem;
+        }
+
+        hr.soft {
+            margin: 1.2rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ced8e3, transparent);
+        }
+
+        .footer-note {
+            margin-top: 2.8rem;
+            font-size: 0.85rem;
+            color: #586c82;
+            text-align: center;
+            border-top: 1px solid #dae0e9;
+            padding-top: 1.5rem;
+        }
+
+        /* 响应 */
+        @media (max-width: 680px) {
+            body {
+                padding: 0.9rem;
+            }
+            .card {
+                padding: 1.2rem 1.2rem;
+            }
+            .two-col, .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .site-header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-container">
+    <header class="site-header">
+        <h1>⚙️ 查询·对照·延伸</h1>
+        <div class="sub">
+            <span>围绕 <a href="https://asia-maiqiu.com">买球站</a> 的日常知识索引</span>
+            <span class="meta-tag">版本 2025 · 信息卡</span>
+        </div>
+    </header>
+
+    <div class="card-grid">
+
+        <!-- 卡片：介绍与定位 -->
+        <div class="card">
+            <h2>📋 基础说明</h2>
+            <p>对于日常关注球类信息的人来说，<a href="https://asia-maiqiu.com">买球站</a> 可作为一种参考对照的渠道。本页整理了常见的查询场景、术语对照以及延伸阅读方向，帮助新接触者更快找到上下文。</p>
+            <div class="note-box">
+                <strong>📌 使用建议：</strong> 将本页视为一个轻量目录，配合其他信息源交叉验证，能更全面地理解相关内容。
+            </div>
+        </div>
+
+        <!-- 卡片：常见场景与对照区 -->
+        <div class="card">
+            <h2>🔍 日常查询场景</h2>
+            <div class="two-col">
+                <div>
+                    <h3>📂 术语对照</h3>
+                    <ul>
+                        <li><strong>盘口 / 让球</strong> —— 表示实力差的一种标度</li>
+                        <li><strong>水位 / 赔率</strong> —— 不同选项对应的回报系数</li>
+                        <li><strong>过关 / 串关</strong> —— 多场组合参考</li>
+                        <li><strong>走地</strong> —— 比赛过程中的动态数据</li>
+                    </ul>
+                    <p style="margin-top:0.5rem;">以上是检索时常见的关键词，在 <a href="https://asia-maiqiu.com">买球站</a> 各板块均可找到对应说明。</p>
+                </div>
+                <div>
+                    <h3>📌 信息类型</h3>
+                    <ul>
+                        <li>赛事列表与即时比分</li>
+                        <li>历史交锋与数据统计</li>
+                        <li>指数变动与趋势图</li>
+                        <li>相关新闻与短讯</li>
+                    </ul>
+                    <p style="margin-top:0.5rem;">建议从分类入口进入，按联赛或日期筛选。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 卡片：提示区 + 相关信息 -->
+        <div class="card">
+            <h2>🧷 提示与延伸</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <strong>🔎 交叉验证</strong>
+                    <span>不要只依赖单一来源，对比不同平台的指数与新闻。使用 <a href="https://asia-maiqiu.com">买球站</a> 的同时，可参考联赛官方统计。</span>
+                </div>
+                <div class="info-item">
+                    <strong>📚 延伸阅读</strong>
+                    <span>战术分析、球队阵容、裁判风格等都能帮助你更全面理解比赛背景。</span>
+                </div>
+                <div class="info-item">
+                    <strong>⚡ 即时性</strong>
+                    <span>走地数据及伤病信息更新较快，留意时间戳与数据来源。</span>
+                </div>
+                <div class="info-item">
+                    <strong>📅 赛事日历</strong>
+                    <span>结合赛程表提前关注杯赛、预选赛等周期。</span>
+                </div>
+            </div>
+            <hr class="soft">
+            <p style="margin-top:0.2rem;">本页仅为知识库式介绍，不构成任何建议。对术语或数据有疑问时，可通过站内指南或社区讨论进一步对照。</p>
+        </div>
+
+        <!-- 卡片：FAQ 摘要式 -->
+        <div class="card">
+            <h2>❓ 对照速览 · 常见问题摘要</h2>
+            <div>
+                <p><strong>Q： 如何快速查找某一场比赛的指数？</strong><br>
+                在 <a href="https://asia-maiqiu.com">买球站</a> 顶部搜索框输入联赛或球队名称，或按日期浏览赛程表。</p>
+                <p><strong>Q： 「水位」变化有什么参考意义？</strong><br>
+                水位变动往往反映市场预期或突发消息（如伤病），可结合新闻与阵容判断。但不代表必然结果。</p>
+                <p><strong>Q： 是否需要注册才能浏览？</strong><br>
+                大部分基础数据（赛程、比分、历史记录）无需登录即可查阅；部分高级筛选或个性化功能可能需要账号。</p>
+                <p><strong>Q： 移动端体验如何？</strong><br>
+                网站适配手机浏览器，版面会自动调整。也可以使用桌面版获得更完整的多窗口对照。</p>
+            </div>
+        </div>
+
+        <!-- 卡片：延伸资源 / 相关链接（纯信息） -->
+        <div class="card">
+            <h2>🔗 相关信息区</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.7rem 1rem; margin-bottom: 0.3rem;">
+                <span class="btn-soft">🏟️ 联赛百科</span>
+                <span class="btn-soft">📊 数据词典</span>
+                <span class="btn-soft">📰 足球新闻聚合</span>
+                <span class="btn-soft">🧮 指数说明</span>
+                <span class="btn-soft">⚽ 球队阵容</span>
+            </div>
+            <p style="margin-top: 0.6rem;">以上为常见外部对照资源，并非站内功能。具体链接可通过搜索引擎或 <a href="https://asia-maiqiu.com">买球站</a> 相关页面找到。</p>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        知识库入口式说明 · 内容仅供对照参考 · 数据请以官方或 <a href="https://asia-maiqiu.com">买球站</a> 实时页面为准
+    </div>
+</div>
+</body>
+</html>
